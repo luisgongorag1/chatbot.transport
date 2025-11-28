@@ -1,0 +1,525 @@
+/* ---------------------------------------------------------
+   DHL BOOKING ASSISTANT - COMPLETE STYLES
+--------------------------------------------------------- */
+
+:root {
+    --dhl-red: #BA0C2F;
+    --dhl-yellow: #FFCC00;
+    --dark-gray: #2c3e50;
+    --light-gray: #ecf0f1;
+    --white: #ffffff;
+    --border-color: #bdc3c7;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-gray);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--dark-gray);
+}
+
+header {
+    background-color: var(--dhl-red);
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    height: 40px;
+}
+
+/* ======== USER SECTION STYLES ======== */
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-form, .signup-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.login-form input, .signup-form input {
+    padding: 8px 12px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    transition: background-color 0.3s;
+    width: 150px;
+}
+
+.login-form input::placeholder, .signup-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.login-form input:focus, .signup-form input:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.login-form button, .signup-form button, #logout-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    color: var(--dhl-red);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-form button:hover, .signup-form button:hover {
+    background-color: var(--light-gray);
+}
+
+.toggle-btn {
+    background-color: transparent !important;
+    color: #fff !important;
+    text-decoration: underline;
+    font-size: 0.9em;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+    font-weight: 700;
+}
+
+#user-name {
+    font-size: 1rem;
+}
+
+#logout-btn {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+}
+
+#logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ======== END OF USER STYLES ======== */
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: calc(100vh - 180px);
+}
+
+.chat-container {
+    flex: 2;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: var(--dhl-yellow);
+    color: var(--dark-gray);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: auto;
+}
+
+.status-indicator.online {
+    background-color: #27ae60;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(39, 174, 96, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    max-width: 75%;
+    padding: 12px 15px;
+    border-radius: 18px;
+    line-height: 1.5;
+    white-space: pre-wrap; 
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.bot {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.message.user {
+    background-color: var(--dhl-yellow);
+    color: var(--dark-gray);
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+    font-weight: 500;
+}
+
+.interactive-button, .calendar-button, .file-button {
+    background-color: var(--dhl-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.interactive-button:hover, .calendar-button:hover:not(:disabled), .file-button:hover:not(:disabled) {
+    background-color: #9a0a28;
+    transform: scale(1.05);
+}
+
+.options-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.option-button {
+    background-color: var(--dhl-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+}
+
+.option-button:hover:not(:disabled) {
+    background-color: #9a0a28;
+    transform: scale(1.02);
+}
+
+.option-button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.chat-input-container {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+#user-input {
+    flex-grow: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    outline: none;
+    background-color: var(--white);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#user-input:focus {
+    border-color: var(--dhl-red);
+}
+
+#user-input:disabled {
+    background-color: #c8d1d3;
+    border-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+#send-btn {
+    background-color: var(--dhl-red);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#send-btn:hover:not(:disabled) {
+    background-color: #9a0a28;
+    transform: scale(1.05);
+}
+
+.booking-summary-container {
+    flex: 1;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-summary-container h3 {
+    margin-top: 0;
+    color: var(--dhl-red);
+    border-bottom: 2px solid var(--light-gray);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.summary-content h4 {
+    color: var(--dark-gray);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-content dl {
+    padding: 0 10px;
+}
+
+.summary-content dt {
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin-top: 12px;
+    font-size: 0.9rem;
+}
+
+.summary-content dd {
+    margin-left: 0;
+    margin-bottom: 5px;
+    padding: 5px 0;
+    color: #555;
+    min-height: 20px;
+    font-size: 0.95rem;
+}
+
+.confirm-btn {
+    background-color: var(--dhl-red);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: auto;
+}
+
+.confirm-btn:hover {
+    background-color: #9a0a28;
+    transform: scale(1.02);
+}
+
+.tracking-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    text-align: center;
+}
+
+#tracking-number-display {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dhl-red);
+    letter-spacing: 2px;
+    margin: 10px 0 0 0;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    font-size: 0.9rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 15% auto;
+    padding: 25px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: var(--dark-gray);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: var(--dhl-red);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#datetime-picker {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#confirm-datetime {
+    background-color: var(--dhl-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#confirm-datetime:hover {
+    background-color: #9a0a28;
+}
+
+.photo-preview {
+    max-width: 100%;
+    max-height: 150px;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    display: block;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .user-section {
+        width: 100%;
+        justify-content: center;
+    }
+    .login-form, .signup-form {
+        justify-content: center;
+    }
+    .login-form input, .signup-form input {
+        width: calc(50% - 5px);
+    }
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .chat-container {
+        height: 60vh;
+    }
+    .booking-summary-container {
+        min-height: 250px;
+    }
+    .message {
+        max-width: 90%;
+    }
+    .options-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .option-button {
+        width: 100%;
+        min-width: auto;
+    }
+}

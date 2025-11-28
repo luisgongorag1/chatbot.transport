@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHL Booking Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Maps API -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0uTsRSxISPMOYzr8Z_vTWPrDIAG-2LMo&libraries=places&callback=initMap">
+    </script>
+</head>
+<body>
+
+    <header>
+        <img src="LogoDHL.png" alt="DHL Logo">
+        
+        <!-- ======== USER SECTION (LOGIN/SIGN-IN) ======== -->
+        <div class="user-section" id="user-section">
+            <!-- Login Form (shown by default) -->
+            <div class="login-form" id="login-form">
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button id="login-btn">Login</button>
+                <button id="signup-toggle-btn" class="toggle-btn">Sign Up</button>
+            </div>
+            
+            <!-- Sign Up Form (hidden by default) -->
+            <div class="signup-form" id="signup-form" style="display: none;">
+                <input type="text" id="signup-name" placeholder="Full Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <button id="signup-btn">Sign Up</button>
+                <button id="login-toggle-btn" class="toggle-btn">Already have an account?</button>
+            </div>
+            
+            <!-- User Info (hidden by default) -->
+            <div class="user-info" id="user-info" style="display: none;">
+                <i class="fas fa-user-circle"></i>
+                <span id="user-name">User</span>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </div>
+        <!-- ======== END OF USER SECTION ======== -->
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- CHAT PANEL -->
+            <section class="chat-container">
+                <div class="chat-header">
+                    <i class="fas fa-robot"></i>
+                    <h2>DHL Booking Assistant</h2>
+                    <span class="status-indicator online"></span>
+                </div>
+
+                <div class="chat-messages" id="chat-messages"></div>
+
+                <div class="chat-input-container" id="input-container">
+                    <input type="text" id="user-input" placeholder="Type your answer here..." autocomplete="off" disabled>
+                    <button id="send-btn" disabled><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </section>
+
+            <!-- BOOKING SUMMARY PANEL -->
+            <aside class="booking-summary-container">
+                <h3><i class="fas fa-clipboard-list"></i> Booking Summary</h3>
+
+                <div class="summary-content">
+
+                    <!-- COLLECTION -->
+                    <h4><i class="fas fa-truck-loading"></i> Collection</h4>
+                    <dl>
+                        <dt>From:</dt>
+                        <dd id="summary-collection-address">-</dd>
+                        <dt>Date:</dt>
+                        <dd id="summary-collection-date">-</dd>
+                        <dt>Time:</dt>
+                        <dd id="summary-collection-time">-</dd>
+                        <dt>Pallets:</dt>
+                        <dd id="summary-pallet-quantity">-</dd>
+                        <dt>CHEPS:</dt>
+                        <dd id="summary-cheps-quantity">-</dd>
+                        <dt>Product Type:</dt>
+                        <dd id="summary-product-type">-</dd>
+                    </dl>
+
+                    <!-- DELIVERY -->
+                    <h4><i class="fas fa-truck"></i> Delivery</h4>
+                    <dl>
+                        <dt>To:</dt>
+                        <dd id="summary-delivery-address">-</dd>
+                        <dt>Date:</dt>
+                        <dd id="summary-delivery-date">-</dd>
+                        <dt>Time:</dt>
+                        <dd id="summary-delivery-time">-</dd>
+                    </dl>
+
+                    <!-- SENDER PHOTO -->
+                    <h4><i class="fas fa-camera"></i> Evidence</h4>
+                    <dl>
+                        <dt>Sender Photo:</dt>
+                        <dd id="summary-sender-photo">-</dd>
+                    </dl>
+
+                    <!-- TRACKING -->
+                    <div id="tracking-section" class="tracking-section" style="display: none;">
+                        <h4><i class="fas fa-barcode"></i> Tracking</h4>
+                        <p id="tracking-number-display"></p>
+                    </div>
+
+                </div>
+
+                <button id="generate-tracking-btn" class="confirm-btn" style="display: none;">
+                    Generate Tracking Number
+                </button>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- DATETIME MODAL -->
+    <div id="calendar-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Select Date and Time</h3>
+            <input type="datetime-local" id="datetime-picker">
+            <button id="confirm-datetime">Confirm</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 DHL International. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
