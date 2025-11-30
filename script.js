@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // !!!CHANGE THIS URL TO YOUR CONTABO SERVER IP!!!
     const apiService = {
         // Example: 'http://123.45.67.89:3001/api/auth'
-        baseUrl: 'http://46.250.243.237:3001/api',
+        baseUrl: 'http://46.250.243.237:3001',
 
         async login(email, password) {
             try {
@@ -302,4 +302,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (apiService.isLoggedIn()) { start(); } else { addMessage("Please log in or sign up to start creating your booking."); }
+
 });
